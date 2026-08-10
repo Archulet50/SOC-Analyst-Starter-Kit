@@ -1,0 +1,35 @@
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs
+*.log
+
+# Sensitive data
+.env
+*.key
+*.pem
+credentials*
+secrets*
+
+# Raw security data
+*.pcap
+*.pcapng
+
+# Splunk runtime data
+splunk/var/
+
+# Product build files
+09-Final-Product/build/

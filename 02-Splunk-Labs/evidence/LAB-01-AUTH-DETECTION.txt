@@ -1,0 +1,76 @@
+LAB 01 — LINUX AUTHENTICATION DETECTION
+SOC Analyst Starter Kit v1
+
+Detection Time:
+2026-08-10 17:20:01
+
+Detection:
+Authentication Failures
+
+Severity:
+HIGH
+
+Failure Count:
+5
+
+Affected User:
+<LOCAL_USER>
+
+Authentication Sources:
+GDM:  4
+sudo: 1
+
+Remote Source:
+None identified
+
+Observed Activity:
+Multiple local PAM authentication failures were detected.
+
+Four events originated from the graphical login authentication process
+(gdm-password).
+
+One event originated from sudo authentication.
+
+No remote host was identified in the observed events.
+
+Analyst Assessment:
+The detection correctly identified multiple authentication failures and
+reached the configured HIGH-severity threshold.
+
+Investigation determined that the events were associated with legitimate
+local authentication and administrative troubleshooting activity.
+
+No evidence of remote authentication attempts was identified in the
+reviewed events.
+
+Disposition:
+BENIGN / AUTHORIZED ACTIVITY
+
+Escalation:
+Not required.
+
+MITRE ATT&CK Mapping:
+T1110 — Brute Force
+
+Mapping Note:
+The detection monitors authentication-failure behavior associated with
+brute-force activity. The observed event set in this investigation was
+determined to be benign.
+
+Analyst Lesson:
+Detection severity represents the significance of activity identified by
+detection logic. It does not, by itself, establish malicious intent.
+
+SOC Workflow:
+
+Telemetry
+   ↓
+Detection
+   ↓
+Triage
+   ↓
+Investigation
+   ↓
+Context
+   ↓
+Disposition

@@ -71,7 +71,7 @@ Focus:
 
 Observed Lab 03 pattern:
 
-```
+```text
 Source:       192.168.1.226
 Destination:  192.168.1.149
 Unique Ports: 6
@@ -86,10 +86,71 @@ historical Splunk Free license-warning restriction. The PCAP, structured
 telemetry, detection logic, and investigation were independently validated.
 
 ---
+### Lab 04 — SSH Brute-Force Detection
 
+Detects and investigates repeated SSH authentication failures using Linux authentication telemetry and Splunk.
+
+**Detection focus**
+- Repeated failed SSH authentication
+- Source/destination/account correlation
+- Time-window aggregation
+- Threshold-based detection
+- Success-after-failure analysis
+- Syslog repeated-message handling
+
+**SOC workflow**
+- Validate the OpenSSH service and TCP/22 listener
+- Establish a pre-attack baseline
+- Generate controlled authentication failures
+- Capture remote brute-force-like activity
+- Review `/var/log/auth.log`
+- Normalize authentication telemetry
+- Develop Splunk SPL detection logic
+- Evaluate detection thresholds
+- Investigate source, destination, and account context
+- Map activity to MITRE ATT&CK
+- Assign severity and disposition
+- Preserve sanitized evidence with SHA-256 integrity verification
+
+**MITRE ATT&CK**
+
+`T1110 — Brute Force`
+
+**Final disposition**
+
+`True Positive — Authorized Security Testing`
+
+**Lab artifacts**
+- [Lab Walkthrough](02-Splunk-Labs/LAB-04-SSH-BRUTE-FORCE.md)
+- [Detection Engineering](03-Detection-Engineering/LAB-04-SSH-BRUTE-FORCE-DETECTION.md)
+- [Incident Investigation Report](04-Incident-Response/LAB-04-SSH-BRUTE-FORCE-INVESTIGATION-REPORT.md)
+- [SOC Alert Triage Checklist](05-SOC-Checklists/SSH-BRUTE-FORCE-ALERT-TRIAGE.md)
+- [Evidence Package](02-Splunk-Labs/evidence/LAB-04/)
+
+**Key analyst lesson**
+
+Authentication detections become more useful when individual events are evaluated as behavior:
+
+```text
+source
++
+destination
++
+account
++
+failure frequency
++
+time window
++
+authentication outcome
++
+surrounding context
+```
+
+---
 ## Repository Structure
 
-```
+```text
 00-Start-Here/
     Project orientation and introductory material
 
@@ -125,7 +186,7 @@ telemetry, detection logic, and investigation were independently validated.
 
 ## SOC Workflow Demonstrated
 
-```
+```text
 Telemetry
     |
     v
@@ -184,7 +245,7 @@ Lab evidence is reviewed before publication.
 
 Where appropriate, the workflow includes:
 
-```
+```text
 Raw Evidence
      |
      v

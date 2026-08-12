@@ -1,0 +1,11 @@
+# Nmap 7.94SVN scan initiated Tue Aug 11 18:38:31 2026 as: nmap -sT -oN 02-Splunk-Labs/evidence/LAB-03/Test-A-TCP-Connect-Scan.txt 192.168.1.149
+Nmap scan report for <SENTINEL_HOST> (192.168.1.149)
+Host is up (0.000043s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT     STATE SERVICE
+22/tcp   open  ssh
+5432/tcp open  postgresql
+8000/tcp open  http-alt
+8089/tcp open  unknown
+
+# Nmap done at Tue Aug 11 18:38:31 2026 -- 1 IP address (1 host up) scanned in 0.04 seconds

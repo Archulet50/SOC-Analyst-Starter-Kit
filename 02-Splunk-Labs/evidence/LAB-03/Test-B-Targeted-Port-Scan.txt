@@ -1,0 +1,13 @@
+# Nmap 7.94SVN scan initiated Tue Aug 11 18:40:43 2026 as: nmap -sT -p 22,5432,8000,8089,8191,9997 -oN 02-Splunk-Labs/evidence/LAB-03/Test-B-Targeted-Port-Scan.txt 192.168.1.149
+Nmap scan report for <SENTINEL_HOST> (192.168.1.149)
+Host is up (0.00011s latency).
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+5432/tcp open  postgresql
+8000/tcp open  http-alt
+8089/tcp open  unknown
+8191/tcp open  limnerpressure
+9997/tcp open  palace-6
+
+# Nmap done at Tue Aug 11 18:40:43 2026 -- 1 IP address (1 host up) scanned in 0.03 seconds

@@ -1,0 +1,26 @@
+06:16:24.188632 IP 192.168.1.226.30723 > 192.168.1.149.22: Flags [S], seq 3681234822, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:24.189603 IP 192.168.1.226.30723 > 192.168.1.149.22: Flags [.], ack 1049419914, win 255, length 0
+06:16:24.189737 IP 192.168.1.226.30723 > 192.168.1.149.22: Flags [F.], seq 0, ack 1, win 255, length 0
+06:16:24.201485 IP 192.168.1.226.30723 > 192.168.1.149.22: Flags [R.], seq 1, ack 44, win 0, length 0
+06:16:24.220648 IP 192.168.1.226.30724 > 192.168.1.149.5432: Flags [S], seq 3689646539, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:25.221545 IP 192.168.1.226.30724 > 192.168.1.149.5432: Flags [S], seq 3689646539, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:27.221496 IP 192.168.1.226.30724 > 192.168.1.149.5432: Flags [S], seq 3689646539, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:31.221453 IP 192.168.1.226.30724 > 192.168.1.149.5432: Flags [S], seq 3689646539, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:39.222212 IP 192.168.1.226.30724 > 192.168.1.149.5432: Flags [S], seq 3689646539, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:45.245474 IP 192.168.1.226.64946 > 192.168.1.149.8000: Flags [S], seq 2427815234, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:46.246333 IP 192.168.1.226.64946 > 192.168.1.149.8000: Flags [S], seq 2427815234, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:48.247812 IP 192.168.1.226.64946 > 192.168.1.149.8000: Flags [S], seq 2427815234, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:16:52.249363 IP 192.168.1.226.64946 > 192.168.1.149.8000: Flags [S], seq 2427815234, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:00.251107 IP 192.168.1.226.64946 > 192.168.1.149.8000: Flags [S], seq 2427815234, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:06.271331 IP 192.168.1.226.64951 > 192.168.1.149.8089: Flags [S], seq 1763138950, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:07.273108 IP 192.168.1.226.64951 > 192.168.1.149.8089: Flags [S], seq 1763138950, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:09.273723 IP 192.168.1.226.64951 > 192.168.1.149.8089: Flags [S], seq 1763138950, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:13.274037 IP 192.168.1.226.64951 > 192.168.1.149.8089: Flags [S], seq 1763138950, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:21.273629 IP 192.168.1.226.64951 > 192.168.1.149.8089: Flags [S], seq 1763138950, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:27.297955 IP 192.168.1.226.64957 > 192.168.1.149.8191: Flags [S], seq 3489403413, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:28.298797 IP 192.168.1.226.64957 > 192.168.1.149.8191: Flags [S], seq 3489403413, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:30.298593 IP 192.168.1.226.64957 > 192.168.1.149.8191: Flags [S], seq 3489403413, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:34.299863 IP 192.168.1.226.64957 > 192.168.1.149.8191: Flags [S], seq 3489403413, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:42.302570 IP 192.168.1.226.64957 > 192.168.1.149.8191: Flags [S], seq 3489403413, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:48.321470 IP 192.168.1.226.64960 > 192.168.1.149.9997: Flags [S], seq 118293447, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+06:17:49.321526 IP 192.168.1.226.64960 > 192.168.1.149.9997: Flags [S], seq 118293447, win 65535, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0

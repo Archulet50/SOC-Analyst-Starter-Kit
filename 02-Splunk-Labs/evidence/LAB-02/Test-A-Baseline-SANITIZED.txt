@@ -1,0 +1,24 @@
+﻿LAB 02 — TEST A — BASELINE POWERSHELL
+
+Telemetry Source:
+Microsoft-Windows-PowerShell/Operational
+
+Event ID:
+4104 — PowerShell Script Block Logging
+
+Lab Marker:
+ACL-LAB02-BASELINE
+
+Observed Script Block:
+
+$LabMessage = "ACL-LAB02-BASELINE"
+Get-Date
+$LabMessage
+
+Analyst Assessment:
+Normal PowerShell activity was successfully captured by Script Block Logging.
+
+No suspicious behavior was identified.
+
+Disposition:
+BENIGN / BASELINE ACTIVITY

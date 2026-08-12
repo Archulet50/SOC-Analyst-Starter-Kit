@@ -1,0 +1,48 @@
+﻿LAB 02 — POWERSHELL PROCESS CORRELATION
+
+Telemetry Source:
+Windows Security Log
+
+Event ID:
+4688 — Process Creation
+
+Lab Marker:
+ACL-LAB02-4688
+
+New Process:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Parent Process:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Command Line:
+powershell.exe -NoProfile -Command "Write-Output 'ACL-LAB02-4688'"
+
+Elevation:
+Elevated PowerShell session
+
+Observed Relationship:
+
+Parent PowerShell
+        |
+        v
+Child PowerShell
+        |
+        v
+Event ID 4688
+        |
+        v
+Command Line Captured
+        |
+        v
+Correlated Process Evidence
+
+Analyst Assessment:
+Process Creation auditing successfully captured the PowerShell
+parent/child relationship and associated command line.
+
+This telemetry can be correlated with PowerShell Event ID 4104
+to improve investigation confidence.
+
+Disposition:
+BENIGN / AUTHORIZED TRAINING ACTIVITY

@@ -1,0 +1,31 @@
+﻿LAB 02 — TEST C — ENCODED POWERSHELL
+
+Telemetry Source:
+Microsoft-Windows-PowerShell/Operational
+
+Event ID:
+4104 — PowerShell Script Block Logging
+
+Lab Marker:
+ACL-LAB02-ENCODED
+
+Execution Method:
+powershell.exe -NoProfile -EncodedCommand <Base64>
+
+Decoded Script Observed in Event 4104:
+
+Write-Output "ACL-LAB02-ENCODED"
+
+Analyst Assessment:
+A harmless PowerShell command was executed using EncodedCommand.
+
+PowerShell Script Block Logging exposed the decoded script content,
+allowing the analyst to inspect the actual behavior.
+
+Encoded execution is an investigative indicator but does not independently
+establish malicious intent.
+
+The decoded payload performed only a benign Write-Output operation.
+
+Disposition:
+BENIGN / AUTHORIZED TRAINING ACTIVITY

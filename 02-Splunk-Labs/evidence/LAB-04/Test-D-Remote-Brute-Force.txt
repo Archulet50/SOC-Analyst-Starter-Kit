@@ -1,0 +1,8 @@
+2026-08-12T09:03:25.134403-06:00 SENTINEL sshd[225844]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:03:26.886814-06:00 SENTINEL sshd[225844]: Failed password for analyst from 192.168.1.226 port 32172 ssh2
+2026-08-12T09:03:37.486231-06:00 SENTINEL sshd[225844]: message repeated 2 times: [ Failed password for analyst from 192.168.1.226 port 32172 ssh2]
+2026-08-12T09:03:38.417734-06:00 SENTINEL sshd[225844]: Connection reset by authenticating user analyst 192.168.1.226 port 32172 [preauth]
+2026-08-12T09:03:38.417982-06:00 SENTINEL sshd[225844]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:04:09.092827-06:00 SENTINEL sshd[225961]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:04:10.884417-06:00 SENTINEL sshd[225961]: Failed password for analyst from 192.168.1.226 port 32190 ssh2
+2026-08-12T09:04:16.259235-06:00 SENTINEL sshd[225961]: Failed password for analyst from 192.168.1.226 port 32190 ssh2

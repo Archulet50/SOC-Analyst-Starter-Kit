@@ -1,0 +1,4 @@
+2026-08-12T08:21:23.100108-06:00 SENTINEL sshd[221064]: Accepted password for analyst from 192.168.1.226 port 31700 ssh2
+2026-08-12T08:25:16.049378-06:00 SENTINEL sshd[221617]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.149  user=analyst
+2026-08-12T08:25:17.890498-06:00 SENTINEL sshd[221617]: Failed password for analyst from 192.168.1.149 port 43392 ssh2
+2026-08-12T08:25:34.406471-06:00 SENTINEL sshd[221617]: Connection closed by authenticating user analyst 192.168.1.149 port 43392 [preauth]

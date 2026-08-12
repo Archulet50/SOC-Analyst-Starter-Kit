@@ -1,0 +1,34 @@
+LAB 04 — TEST A
+PRE-ATTACK SSH BASELINE
+
+Target Role: Sentinel
+Platform: Ubuntu Linux
+Service: OpenSSH Server
+Protocol: SSH
+Port: TCP/22
+Service State: ACTIVE / RUNNING
+
+Listener State:
+0.0.0.0:22    LISTEN
+[::]:22       LISTEN
+
+Authentication Telemetry:
+Primary Log: /var/log/auth.log
+Additional Source: systemd journal (ssh.service)
+
+Pre-Test Observations:
+- SSH service operational.
+- TCP/22 reachable.
+- Authentication logging operational.
+- Previous authorized SSH authentication observed.
+- Previous network reconnaissance connections to TCP/22 observed.
+- No Lab 04 repeated authentication activity generated at baseline.
+
+Analyst Assessment:
+Baseline established successfully before controlled authentication testing.
+
+Disposition:
+BENIGN / BASELINE ACTIVITY
+
+SOC Analyst Starter Kit v1
+Lab 04 — SSH Brute-Force Detection & Investigation

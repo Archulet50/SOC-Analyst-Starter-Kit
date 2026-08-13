@@ -198,6 +198,61 @@ Lab 05 demonstrates that authentication failures become higher-priority investig
 
 ---
 
+### Lab 06 — Windows Privileged Administrative Discovery
+
+Correlates Windows authentication, privilege-assignment, and process-creation telemetry to identify administrative discovery performed within a privileged logon context.
+
+**Detection focus**
+
+- Windows identity and privilege correlation
+- Event ID 4624 successful authentication
+- Event ID 4672 special privilege assignment
+- Event ID 4688 process creation
+- Logon ID correlation
+- Parent-child process relationships
+- Command-line behavioral context
+- Benign elevated-process comparison
+
+**Validation results**
+
+- Interactive authentication observed
+- Linked privileged logon context confirmed
+- Special privileges correlated through Logon ID `0x1F23B71`
+- Benign elevated `notepad.exe` control preserved
+- `net.exe localgroup Administrators` discovery activity observed
+- `powershell.exe -> net.exe -> net1.exe` process chain confirmed
+- Primary Windows evidence: SHA-256 verified
+- Derived detection artifacts: SHA-256 verified
+- Splunk dataset ingestion: COMPLETED
+- Live Splunk correlation search: PENDING
+
+**SOC workflow**
+
+- Establish Windows Security auditing baseline
+- Generate benign elevated-process control
+- Generate controlled administrative discovery
+- Preserve Windows Security Event evidence
+- Correlate authentication and privilege telemetry
+- Associate privileged context with process creation
+- Compare benign and security-relevant elevated execution
+- Normalize Windows telemetry for SIEM analysis
+- Develop Splunk SPL correlation logic
+- Ingest normalized telemetry into Splunk
+- Perform analyst assessment and assign disposition
+- Preserve primary and derived artifacts with SHA-256 verification
+
+**MITRE ATT&CK**
+
+`T1087 — Account Discovery`
+
+**Final disposition**
+
+TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+Lab 06 demonstrates that elevated process execution becomes a higher-value detection signal when identity, privilege, process ancestry, and command-line behavior are correlated through the Windows logon context.
+
+---
+
 ## Repository Structure
 
 ```text

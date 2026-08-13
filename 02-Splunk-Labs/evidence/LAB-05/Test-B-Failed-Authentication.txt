@@ -1,0 +1,3 @@
+2026-08-12T09:55:08.582827-06:00 SENTINEL sshd[232201]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:55:10.654530-06:00 SENTINEL sshd[232201]: Failed password for analyst from 192.168.1.226 port 51079 ssh2
+2026-08-12T09:55:17.424918-06:00 SENTINEL sshd[232201]: Connection reset by authenticating user analyst 192.168.1.226 port 51079 [preauth]

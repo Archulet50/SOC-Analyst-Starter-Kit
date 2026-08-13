@@ -1,0 +1,48 @@
+===== LAB 05 PRE-ATTACK BASELINE =====
+2026-08-12T09:52:55-06:00
+
+===== SSH SERVICE =====
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-08-10 16:32:42 MDT; 1 day 17h ago
+TriggeredBy: ● ssh.socket
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1651 (sshd)
+      Tasks: 1 (limit: 33993)
+     Memory: 2.2M (peak: 8.2M)
+        CPU: 318ms
+     CGroup: /system.slice/ssh.service
+             └─1651 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Aug 12 08:33:07 SENTINEL sshd[222496]: Failed password for analyst from 192.168.1.149 port 35964 ssh2
+Aug 12 09:03:25 SENTINEL sshd[225844]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+Aug 12 09:03:26 SENTINEL sshd[225844]: Failed password for analyst from 192.168.1.226 port 32172 ssh2
+Aug 12 09:03:32 SENTINEL sshd[225844]: Failed password for analyst from 192.168.1.226 port 32172 ssh2
+Aug 12 09:03:37 SENTINEL sshd[225844]: Failed password for analyst from 192.168.1.226 port 32172 ssh2
+Aug 12 09:03:38 SENTINEL sshd[225844]: Connection reset by authenticating user analyst 192.168.1.226 port 32172 [preauth]
+Aug 12 09:03:38 SENTINEL sshd[225844]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+Aug 12 09:04:09 SENTINEL sshd[225961]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+Aug 12 09:04:10 SENTINEL sshd[225961]: Failed password for analyst from 192.168.1.226 port 32190 ssh2
+Aug 12 09:04:16 SENTINEL sshd[225961]: Failed password for analyst from 192.168.1.226 port 32190 ssh2
+
+===== SSH LISTENER =====
+LISTEN 0      4096         0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=1651,fd=3),("systemd",pid=1,fd=415))
+LISTEN 0      4096            [::]:22            [::]:*    users:(("sshd",pid=1651,fd=4),("systemd",pid=1,fd=417))
+
+===== RECENT SSH AUTHENTICATION =====
+2026-08-12T08:33:05.368961-06:00 SENTINEL sshd[222496]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.149  user=analyst
+2026-08-12T08:33:07.266014-06:00 SENTINEL sshd[222496]: Failed password for analyst from 192.168.1.149 port 35964 ssh2
+2026-08-12T08:48:12.875037-06:00 SENTINEL sshd[221148]: Received disconnect from 192.168.1.226 port 31700:11: disconnected by user
+2026-08-12T08:48:12.876514-06:00 SENTINEL sshd[221148]: Disconnected from user analyst 192.168.1.226 port 31700
+2026-08-12T08:48:12.876656-06:00 SENTINEL sshd[221064]: pam_unix(sshd:session): session closed for user analyst
+2026-08-12T08:52:37.528114-06:00 SENTINEL sshd[224728]: Connection closed by 192.168.1.226 port 54184
+2026-08-12T09:01:39.370144-06:00 SENTINEL sshd[225642]: Connection closed by 192.168.1.226 port 57194
+2026-08-12T09:03:25.134403-06:00 SENTINEL sshd[225844]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:03:26.886814-06:00 SENTINEL sshd[225844]: Failed password for analyst from 192.168.1.226 port 32172 ssh2
+2026-08-12T09:03:37.486231-06:00 SENTINEL sshd[225844]: message repeated 2 times: [ Failed password for analyst from 192.168.1.226 port 32172 ssh2]
+2026-08-12T09:03:38.417734-06:00 SENTINEL sshd[225844]: Connection reset by authenticating user analyst 192.168.1.226 port 32172 [preauth]
+2026-08-12T09:03:38.417982-06:00 SENTINEL sshd[225844]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:04:09.092827-06:00 SENTINEL sshd[225961]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.226  user=analyst
+2026-08-12T09:04:10.884417-06:00 SENTINEL sshd[225961]: Failed password for analyst from 192.168.1.226 port 32190 ssh2
+2026-08-12T09:04:16.259235-06:00 SENTINEL sshd[225961]: Failed password for analyst from 192.168.1.226 port 32190 ssh2

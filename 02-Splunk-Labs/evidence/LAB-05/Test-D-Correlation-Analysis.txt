@@ -1,0 +1,13 @@
+===== LAB 05 SUCCESS-AFTER-FAILURE ANALYSIS =====
+Failures: 4
+Successes: 1
+
+Source:       192.168.1.226
+Destination:  192.168.1.149
+User:         analyst
+Last failure: 2026-08-12T09:58:32-06:00
+Success:      2026-08-12T10:16:34-06:00
+Gap:          0:18:02
+ 5-minute window: NOT DETECTED
+15-minute window: NOT DETECTED
+30-minute window: DETECTED

@@ -1,0 +1,24 @@
+index=main sourcetype="lab05:ssh:normalized"
+| eval failure_time=if(action="failure",_time,null())
+| eval success_time=if(action="success",_time,null())
+| eventstats
+    count(eval(action="failure")) AS failure_count
+    max(failure_time) AS last_failure
+    min(success_time) AS first_success
+    BY src_ip dest_ip user
+| where failure_count >= 4
+    AND isnotnull(first_success)
+    AND first_success > last_failure
+    AND first_success-last_failure <= 1800
+| eval correlation_seconds=first_success-last_failure
+| eval correlation_minutes=round(correlation_seconds/60,2)
+| convert ctime(last_failure) ctime(first_success)
+| table
+    src_ip
+    dest_ip
+    user
+    failure_count
+    last_failure
+    first_success
+    correlation_seconds
+    correlation_minutes

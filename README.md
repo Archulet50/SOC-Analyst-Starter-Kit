@@ -148,6 +148,56 @@ surrounding context
 ```
 
 ---
+### Lab 05 — SSH Success-After-Failure Correlation
+
+Correlates repeated SSH authentication failures with a later successful authentication using normalized Linux authentication telemetry and Splunk-oriented detection logic.
+
+**Detection focus**
+
+- Repeated failed SSH authentication
+- Success-after-failure correlation
+- Source/destination/account matching
+- Temporal correlation windows
+- Defensive-control interaction
+- Fail2Ban response analysis
+
+**Validation results**
+
+- 4 normalized authentication failures
+- 1 subsequent successful authentication
+- Same source, destination, and account
+- Failure-to-success interval: 18 minutes 02 seconds
+- 5-minute window: NOT DETECTED
+- 15-minute window: NOT DETECTED
+- 30-minute window: DETECTED
+
+**SOC workflow**
+
+- Establish authentication baseline
+- Generate controlled failed authentication
+- Generate repeated authentication failures
+- Observe Fail2Ban defensive response
+- Preserve OpenSSH and Fail2Ban evidence
+- Normalize authentication telemetry
+- Correlate failures and successful authentication
+- Evaluate multiple temporal windows
+- Develop Splunk SPL detection logic
+- Perform incident-response analysis
+- Assign final disposition
+- Preserve sanitized evidence with SHA-256 verification
+
+**MITRE ATT&CK**
+
+`T1110 — Brute Force`
+
+**Final disposition**
+
+TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+Lab 05 demonstrates that authentication failures become higher-priority investigative activity when correlated with a subsequent successful authentication as a behavioral sequence.
+
+---
+
 ## Repository Structure
 
 ```text

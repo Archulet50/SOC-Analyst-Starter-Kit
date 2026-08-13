@@ -1,0 +1,4 @@
+8d7a25a08588f78ce09ae8222674506389526245d17d72d130fea04516c24f23  Test-A-Windows-Audit-Baseline.txt
+814b0494e209b11ec5fa2ecd13d88d578209137b2e2c5be3637ee62735244dca  Test-B-Benign-Elevated-Process.txt
+0684cedc5a5e304cf1a41a6a5b46ae4ebdbfbe436745cb15a2f7b8ec5d917877  Test-C-Administrative-Discovery.txt
+740d692614bf972ed4838cf5d9815c6da076356c2d0569675fb92b4ef56bedfa  Test-D-Identity-Privilege-Correlation.txt

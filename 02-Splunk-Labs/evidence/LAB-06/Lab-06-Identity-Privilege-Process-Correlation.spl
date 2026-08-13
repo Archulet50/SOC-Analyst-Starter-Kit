@@ -1,0 +1,34 @@
+index=main sourcetype="lab06:windows:normalized"
+| eval privileged_logon=if(event_id=4672,logon_id,null())
+| eval linked_privileged_logon=if(event_id=4624,linked_logon_id,null())
+| eval process_logon=if(event_id=4688,logon_id,null())
+| eventstats
+    values(privileged_logon) AS privileged_logons
+    values(linked_privileged_logon) AS linked_logons
+    BY host user
+| eval privilege_correlated=if(
+    event_id=4688
+    AND mvfind(privileged_logons,"^".process_logon."$")>=0
+    AND mvfind(linked_logons,"^".process_logon."$")>=0,
+    1,
+    0
+)
+| eval discovery_process=if(
+    event_id=4688
+    AND match(process_name,"(?i)^(net|net1)\.exe$")
+    AND match(command_line,"(?i)localgroup\s+Administrators"),
+    1,
+    0
+)
+| where privilege_correlated=1 AND discovery_process=1
+| table
+    _time
+    host
+    user
+    logon_id
+    process_name
+    parent_process
+    command_line
+    token_elevation
+    event_type
+    test_stage

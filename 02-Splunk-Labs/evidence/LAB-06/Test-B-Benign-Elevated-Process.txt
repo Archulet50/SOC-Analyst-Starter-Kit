@@ -1,0 +1,66 @@
+﻿LAB 06 — TEST B: BENIGN ELEVATED PROCESS
+Endpoint: WINDOWS-ENDPOINT
+Test Classification: Authorized Benign Administrative Activity
+Test Window: 2026-08-12T21:19:10-06:00 through 2026-08-12T21:20:38-06:00
+
+===== TEST OBJECTIVE =====
+Establish a negative-control case demonstrating that elevated process
+execution alone is insufficient to classify activity as suspicious.
+
+===== EVENT 4688 — NOTEPAD =====
+
+
+TimeCreated : 8/12/2026 9:19:50 PM
+Id          : 4688
+Message     : A new process has been created.
+              
+              Creator Subject:
+              	Security ID:		S-1-5-21-REDACTED
+              	Account Name:		analyst
+              	Account Domain:		WINDOWS-ENDPOINT
+              	Logon ID:		0x1F23B71
+              
+              Target Subject:
+              	Security ID:		S-1-0-0
+              	Account Name:		-
+              	Account Domain:		-
+              	Logon ID:		0x0
+              
+              Process Information:
+              	New Process ID:		0x30ac
+              	New Process Name:	C:\Windows\System32\notepad.exe
+              	Token Elevation Type:	TokenElevationTypeFull (2)
+              	Mandatory Label:		S-1-16-12288
+              	Creator Process ID:	0x186c
+              	Creator Process Name:	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+              	Process Command Line:	"C:\WINDOWS\system32\notepad.exe" 
+              
+              Token Elevation Type indicates the type of token that was assigned to the new process in accordance with User Account Control policy.
+              
+              Type 1 is a full token with no privileges removed or groups disabled.  A full token is only used if User Account Control is disabled or if the user is the built-in Administrator account or a service account.
+              
+              Type 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when User Account Control is enabled and the user chooses to start the program using Run as administrator.  An elevated 
+              token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the user is a member of the Administrators group.
+              
+              Type 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when User Account Control is enabled, the application does not require administrative 
+              privilege, and the user does not choose to start the program using Run as administrator.
+
+
+
+
+
+===== ANALYST ASSESSMENT =====
+Observed process: notepad.exe
+Parent process: powershell.exe
+Interactive account: analyst
+Token elevation: TokenElevationTypeFull (2)
+Activity authorization: Controlled Lab 06 test
+
+The process executed with an elevated token; however, elevation alone does
+not establish malicious behavior.
+
+Test B provides the benign comparison case for subsequent detection
+engineering and validation.
+
+TEST B RESULT: BENIGN CONTROL OBSERVED
+

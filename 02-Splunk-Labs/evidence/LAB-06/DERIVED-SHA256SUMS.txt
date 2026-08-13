@@ -1,0 +1,2 @@
+a3dbeae70fc12efc30461e53b362c9863ba74d4700f09b20ca98db1f2c021138  Lab-06-Splunk-Telemetry.csv
+11d3bc8ebf6b5677fcfd7697f6e52801999e69fe2c59f824692363c6dd2c7d37  Lab-06-Identity-Privilege-Process-Correlation.spl

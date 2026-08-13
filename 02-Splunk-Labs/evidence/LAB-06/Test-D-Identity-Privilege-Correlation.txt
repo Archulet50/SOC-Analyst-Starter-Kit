@@ -1,0 +1,129 @@
+﻿LAB 06 - TEST D: IDENTITY AND PRIVILEGE CORRELATION
+Endpoint: WINDOWS-ENDPOINT
+Test Classification: Windows Logon and Privilege Correlation
+
+===== TEST OBJECTIVE =====
+Preserve the Windows authentication and privilege events associated with
+the privileged process context observed during Lab 06.
+
+Correlation identifiers:
+
+4624 New Logon ID:     0x1F23C58
+4624 Linked Logon ID:  0x1F23B71
+4672 Logon ID:         0x1F23B71
+4688 Creator Logon ID: 0x1F23B71
+
+===== EVENT 4624 - INTERACTIVE LOGON =====
+
+
+TimeCreated : 8/12/2026 9:03:39 PM
+Id          : 4624
+Message     : An account was successfully logged on.
+              
+              Subject:
+              	Security ID:		S-1-5-18
+              	Account Name:		WINDOWS-ENDPOINT$
+              	Account Domain:		WORKGROUP
+              	Logon ID:		0x3E7
+              
+              Logon Information:
+              	Logon Type:		2
+              	Restricted Admin Mode:	-
+              	Remote Credential Guard:	-
+              	Virtual Account:		No
+              	Elevated Token:		No
+              
+              Impersonation Level:		Impersonation
+              
+              New Logon:
+              	Security ID:		S-1-5-21-REDACTED
+              	Account Name:		analyst
+              	Account Domain:		WINDOWS-ENDPOINT
+              	Logon ID:		0x1F23C58
+              	Linked Logon ID:		0x1F23B71
+              	Network Account Name:	-
+              	Network Account Domain:	-
+              	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+              
+              Process Information:
+              	Process ID:		0x8f4
+              	Process Name:		C:\Windows\System32\svchost.exe
+              
+              Network Information:
+              	Workstation Name:	WINDOWS-ENDPOINT
+              	Source Network Address:	127.0.0.1
+              	Source Port:		0
+              
+              Detailed Authentication Information:
+              	Logon Process:		User32 
+              	Authentication Package:	Negotiate
+              	Transited Services:	-
+              	Package Name (NTLM only):	-
+              	Key Length:		0
+              
+              This event is generated when a logon session is created. It is generated on the computer that was accessed.
+              
+              The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+              
+              The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+              
+              The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+              
+              The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+              
+              The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+              
+              The authentication information fields provide detailed information about this specific logon request.
+              	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+              	- Transited services indicate which intermediate services have participated in this logon request.
+              	- Package name indicates which sub-protocol was used among the NTLM protocols.
+              	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.
+
+
+
+
+===== EVENT 4672 - SPECIAL PRIVILEGES =====
+
+
+TimeCreated : 8/12/2026 9:03:39 PM
+Id          : 4672
+Message     : Special privileges assigned to new logon.
+              
+              Subject:
+              	Security ID:		S-1-5-21-REDACTED
+              	Account Name:		analyst
+              	Account Domain:		WINDOWS-ENDPOINT
+              	Logon ID:		0x1F23B71
+              
+              Privileges:		SeSecurityPrivilege
+              			SeTakeOwnershipPrivilege
+              			SeLoadDriverPrivilege
+              			SeBackupPrivilege
+              			SeRestorePrivilege
+              			SeDebugPrivilege
+              			SeSystemEnvironmentPrivilege
+              			SeImpersonatePrivilege
+              			SeDelegateSessionUserImpersonatePrivilege
+
+
+
+
+
+===== CORRELATION ASSESSMENT =====
+The 4624 event records an interactive Logon Type 2 session for the tested
+user.
+
+The 4624 New Logon ID is 0x1F23C58.
+
+The same 4624 event records Linked Logon ID 0x1F23B71.
+
+Event 4672 assigns special privileges to Logon ID 0x1F23B71.
+
+The Test B and Test C Event 4688 process records also identify creator
+Logon ID 0x1F23B71.
+
+This establishes a correlation path from interactive authentication through
+the linked privileged logon context to subsequent elevated process activity.
+
+TEST D RESULT: IDENTITY-PRIVILEGE-PROCESS CORRELATION CONFIRMED
+

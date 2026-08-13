@@ -1,0 +1,116 @@
+﻿LAB 06 - TEST C: ADMINISTRATIVE DISCOVERY
+Endpoint: WINDOWS-ENDPOINT
+Test Classification: Authorized Controlled Administrative Discovery
+Test Window: 2026-08-12T21:23:08-06:00 through 2026-08-12T21:24:05-06:00
+
+===== TEST OBJECTIVE =====
+Generate and preserve security-relevant administrative discovery activity
+without modifying accounts, groups, permissions, services, registry keys,
+or files.
+
+Controlled command:
+
+net.exe localgroup Administrators
+
+===== EVENT 4688 - NET.EXE / NET1.EXE =====
+
+
+TimeCreated : 8/12/2026 9:23:45 PM
+Id          : 4688
+Message     : A new process has been created.
+              
+              Creator Subject:
+              	Security ID:		S-1-5-21-REDACTED
+              	Account Name:		analyst
+              	Account Domain:		WINDOWS-ENDPOINT
+              	Logon ID:		0x1F23B71
+              
+              Target Subject:
+              	Security ID:		S-1-0-0
+              	Account Name:		-
+              	Account Domain:		-
+              	Logon ID:		0x0
+              
+              Process Information:
+              	New Process ID:		0x2188
+              	New Process Name:	C:\Windows\System32\net.exe
+              	Token Elevation Type:	TokenElevationTypeFull (2)
+              	Mandatory Label:		S-1-16-12288
+              	Creator Process ID:	0x186c
+              	Creator Process Name:	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+              	Process Command Line:	"C:\WINDOWS\system32\net.exe" localgroup Administrators
+              
+              Token Elevation Type indicates the type of token that was assigned to the new process in accordance with User Account Control policy.
+              
+              Type 1 is a full token with no privileges removed or groups disabled.  A full token is only used if User Account Control is disabled or if the user is the built-in Administrator account or a service account.
+              
+              Type 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when User Account Control is enabled and the user chooses to start the program using Run as administrator.  An elevated 
+              token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the user is a member of the Administrators group.
+              
+              Type 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when User Account Control is enabled, the application does not require administrative 
+              privilege, and the user does not choose to start the program using Run as administrator.
+
+TimeCreated : 8/12/2026 9:23:45 PM
+Id          : 4688
+Message     : A new process has been created.
+              
+              Creator Subject:
+              	Security ID:		S-1-5-21-REDACTED
+              	Account Name:		analyst
+              	Account Domain:		WINDOWS-ENDPOINT
+              	Logon ID:		0x1F23B71
+              
+              Target Subject:
+              	Security ID:		S-1-0-0
+              	Account Name:		-
+              	Account Domain:		-
+              	Logon ID:		0x0
+              
+              Process Information:
+              	New Process ID:		0x6784
+              	New Process Name:	C:\Windows\System32\net1.exe
+              	Token Elevation Type:	TokenElevationTypeFull (2)
+              	Mandatory Label:		S-1-16-12288
+              	Creator Process ID:	0x2188
+              	Creator Process Name:	C:\Windows\System32\net.exe
+              	Process Command Line:	C:\WINDOWS\system32\net1 localgroup Administrators
+              
+              Token Elevation Type indicates the type of token that was assigned to the new process in accordance with User Account Control policy.
+              
+              Type 1 is a full token with no privileges removed or groups disabled.  A full token is only used if User Account Control is disabled or if the user is the built-in Administrator account or a service account.
+              
+              Type 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when User Account Control is enabled and the user chooses to start the program using Run as administrator.  An elevated 
+              token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the user is a member of the Administrators group.
+              
+              Type 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when User Account Control is enabled, the application does not require administrative 
+              privilege, and the user does not choose to start the program using Run as administrator.
+
+
+
+
+
+===== ANALYST ASSESSMENT =====
+Observed process chain:
+
+powershell.exe
+    ->
+net.exe
+    ->
+net1.exe
+
+Observed command context:
+
+localgroup Administrators
+
+Interactive account: analyst
+Token elevation: TokenElevationTypeFull (2)
+System modification: None
+Activity authorization: Controlled Lab 06 test
+
+Unlike Test B, Test C contains security-relevant administrative discovery
+behavior. Elevated execution alone does not distinguish the tests; process,
+parent-process, command-line, account, and privilege context provide the
+higher-value detection signal.
+
+TEST C RESULT: AUTHORIZED SECURITY-RELEVANT DISCOVERY OBSERVED
+

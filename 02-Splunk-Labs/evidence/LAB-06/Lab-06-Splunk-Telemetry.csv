@@ -1,0 +1,6 @@
+timestamp,host,event_id,user,logon_id,linked_logon_id,process_name,parent_process,command_line,token_elevation,event_type,test_stage
+2026-08-12T21:03:39-06:00,WINDOWS-ENDPOINT,4624,analyst,0x1F23C58,0x1F23B71,,,,"No",interactive_logon,Test-D
+2026-08-12T21:03:39-06:00,WINDOWS-ENDPOINT,4672,analyst,0x1F23B71,,,,,,special_privileges,Test-D
+2026-08-12T21:19:50-06:00,WINDOWS-ENDPOINT,4688,analyst,0x1F23B71,,notepad.exe,powershell.exe,"notepad.exe",TokenElevationTypeFull,benign_elevated_process,Test-B
+2026-08-12T21:23:45-06:00,WINDOWS-ENDPOINT,4688,analyst,0x1F23B71,,net.exe,powershell.exe,"net.exe localgroup Administrators",TokenElevationTypeFull,administrative_discovery,Test-C
+2026-08-12T21:23:45-06:00,WINDOWS-ENDPOINT,4688,analyst,0x1F23B71,,net1.exe,net.exe,"net1.exe localgroup Administrators",TokenElevationTypeFull,administrative_discovery,Test-C

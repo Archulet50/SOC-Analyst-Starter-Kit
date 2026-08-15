@@ -1,0 +1,4 @@
+"TimeCreated","Marker","Score","Signals","Disposition"
+"8/14/2026 9:19:08 PM","E1-BASELINE","1","NoProfile","BASELINE"
+"8/14/2026 9:19:11 PM","E2-REVIEW","2","NonInteractive, NoProfile","REVIEW"
+"8/14/2026 9:19:14 PM","E3-INVESTIGATE","5","EncodedCommand, NonInteractive, NoProfile","INVESTIGATE"

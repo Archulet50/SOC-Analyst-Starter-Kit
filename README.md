@@ -253,6 +253,69 @@ Lab 06 demonstrates that elevated process execution becomes a higher-value detec
 
 ---
 
+### Lab 07 — PowerShell Behavioral Detection
+
+Develops and validates a behavioral PowerShell analytic using Windows process-creation and PowerShell script-block telemetry.
+
+**Detection focus**
+
+- Windows Security Event ID 4688
+- PowerShell Operational Event ID 4104
+- Process and script-block correlation
+- Encoded PowerShell analysis
+- Weighted behavioral scoring
+- Controlled baseline and positive testing
+- False-positive considerations
+- Detection validation and query troubleshooting
+
+**Behavioral scoring**
+
+| Signal | Score |
+|---|---:|
+| `EncodedCommand` | +3 |
+| `NonInteractive` | +1 |
+| `NoProfile` | +1 |
+
+**Validation results**
+
+| Test | Score | Disposition |
+|---|---:|---|
+| E1 | 1 | BASELINE |
+| E2 | 2 | REVIEW |
+| E3 | 5 | INVESTIGATE |
+
+The validation process identified a blind spot in the original Event ID 4688 investigation query: the E3 marker was contained inside Base64-encoded command-line content and therefore was not visible as plaintext.
+
+The query was corrected and successfully retested.
+
+**MITRE ATT&CK**
+
+`T1059.001 — PowerShell`
+
+**Key analyst lesson**
+
+Event ID 4688 provides process and command-line context, while Event ID 4104 can reveal the PowerShell script content behind encoded execution.
+
+```text
+4688 → How was PowerShell launched?
+4104 → What did PowerShell execute?
+```
+
+Security-relevant PowerShell behavior warrants investigation but does not, by itself, establish malicious intent.
+
+**Lab artifacts**
+
+- [Lab 07 — PowerShell Behavioral Detection](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/)
+- [Detection Script](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/detection/powershell-behavioral-detection.ps1)
+- [Analyst Findings](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/docs/analyst-findings.md)
+- [Validation Evidence](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/evidence/)
+
+**Final disposition**
+
+TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+---
+
 ## Repository Structure
 
 ```text
@@ -318,7 +381,6 @@ The labs are designed to reinforce a core analyst principle:
 **Detection severity identifies activity worthy of attention. It does not, by itself, establish malicious intent.**
 
 ---
-
 ## Technical Skills Demonstrated
 
 * Splunk
@@ -333,6 +395,10 @@ The labs are designed to reinforce a core analyst principle:
 * PCAP analysis
 * Network service discovery
 * Detection engineering
+* Behavioral detection scoring
+* Event correlation
+* Controlled detection validation
+* Detection tuning and query troubleshooting
 * Incident investigation
 * Alert triage
 * MITRE ATT&CK
@@ -372,8 +438,7 @@ Git QA
 Publish
 ```
 
-Personal identifiers, unnecessary host information, credentials, tokens, and
-other sensitive values are removed before public publication where applicable.
+Personal identifiers, unnecessary host information, credentials, tokens, and other sensitive values are removed before public publication where applicable.
 
 ---
 
@@ -394,8 +459,7 @@ Each detection is developed around:
 
 The goal is not simply to produce alerts.
 
-The goal is to produce alerts that an analyst can explain, investigate, and
-defend with evidence.
+The goal is to produce alerts that an analyst can explain, investigate, and defend with evidence.
 
 ---
 
@@ -415,30 +479,55 @@ For a quick technical review, begin with:
 * Lab 01 — Linux Authentication Detection
 * Lab 02 — Suspicious PowerShell
 * Lab 03 — Network Reconnaissance Detection
+* Lab 04 — SSH Brute-Force Detection
+* Lab 05 — SSH Success-After-Failure Correlation
+* Lab 06 — Windows Privileged Administrative Discovery
+* [Lab 07 — PowerShell Behavioral Detection](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/)
 
 ---
 
 ## Project Status
 
-Completed:
+### Completed
 
 * Lab 01 — Linux Authentication Detection
 * Lab 02 — Suspicious PowerShell
 * Lab 03 — Network Reconnaissance Detection
+* Lab 04 — SSH Brute-Force Detection
+* Lab 05 — SSH Success-After-Failure Correlation
+* Lab 06 — Windows Privileged Administrative Discovery
+* Lab 07 — PowerShell Behavioral Detection
 
-In progress:
+### Current Milestone
 
-* Additional SOC labs
-* Splunk detection validation
-* Detection maturity expansion
+**Seven hands-on SOC labs completed and documented.**
+
+The project now demonstrates practical work across:
+
+* Linux authentication detection
+* Windows endpoint telemetry
+* PowerShell analysis
+* Network reconnaissance detection
+* SSH brute-force detection
+* Authentication success-after-failure correlation
+* Windows privilege and process correlation
+* Behavioral detection engineering
+* Controlled detection validation
+* Incident investigation
+* Evidence integrity verification
+
+### Next
+
+* Lab 08 — Detection engineering expansion
+* Additional Splunk validation
+* Detection maturity and tuning
 * Portfolio packaging
 
 ---
 
 ## Purpose
 
-This project demonstrates practical SOC analyst capability through repeatable,
-documented, evidence-backed lab work.
+This project demonstrates practical SOC analyst capability through repeatable, documented, evidence-backed lab work.
 
 The emphasis is on:
 

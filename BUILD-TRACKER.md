@@ -5,8 +5,6 @@
 **Version:** 1.0  
 **Status:** IN DEVELOPMENT
 
----
-
 # PHASE 1 — FOUNDATION
 
 ## Product Foundation
@@ -48,157 +46,266 @@ The primary SOC workstation currently provides:
 - SPL searching
 - Detection engineering
 - Security monitoring
-- Python security automation
+- Python security Automation
 - Git version control
 - Lab development
 - Technical documentation
 
----
-
 # PHASE 2 — HANDS-ON LABS
 
-## Lab 01 — Linux Authentication Investigation
+**Status:** ACTIVE — 7 LABS COMPLETED
 
-**Status:** NOT STARTED
+The hands-on lab program has expanded beyond the original three-lab
+Version 1.0 concept. Labs are developed through controlled activity,
+telemetry collection, detection development, investigation, evidence
+preservation, MITRE ATT&CK mapping, and analyst documentation.
+## Lab 01 — Linux Authentication Detection
 
-### Objective
+**Status:** COMPLETE
 
-Generate Linux authentication activity, ingest the security
-telemetry into Splunk, identify suspicious authentication behavior,
-investigate the activity, document the evidence, and map relevant
-behavior to MITRE ATT&CK.
+### Focus
 
-### Build Tasks
+- Linux authentication telemetry
+- PAM authentication failures
+- Detection severity
+- Analyst triage and investigation
+- MITRE ATT&CK T1110 — Brute Force
+- Benign versus security-relevant disposition
 
-- [ ] Define learning objectives
-- [ ] Identify Linux authentication log source
-- [ ] Verify log permissions
-- [ ] Verify Splunk input
-- [ ] Generate safe authentication test events
-- [ ] Confirm events reach Splunk
-- [ ] Develop baseline SPL search
-- [ ] Develop detection SPL
-- [ ] Identify suspicious authentication activity
-- [ ] Perform analyst investigation
-- [ ] Identify relevant fields
-- [ ] Determine severity
-- [ ] Identify possible false positives
-- [ ] Map detection to MITRE ATT&CK
-- [ ] Capture sanitized screenshots
-- [ ] Complete investigation worksheet
-- [ ] Complete incident report
-- [ ] Write student instructions
-- [ ] Write expected-results section
-- [ ] Create troubleshooting section
-- [ ] Validate lab from beginning to end
+## Lab 02 — Suspicious PowerShell
 
----
+**Status:** COMPLETE
 
-## Lab 02 — Suspicious PowerShell Investigation
+### Focus
 
-**Status:** NOT STARTED
+- Windows PowerShell 5.1
+- PowerShell Script Block Logging
+- Event ID 4104
+- Process Creation Event ID 4688
+- Encoded PowerShell
+- Parent/child process analysis
+- Evidence sanitization
+- SHA-256 integrity verification
+- MITRE ATT&CK T1059.001 — PowerShell
 
-### Objective
+## Lab 03 — Network Reconnaissance Detection
 
-Generate controlled PowerShell activity on a Windows endpoint,
-collect the relevant telemetry, develop a Splunk detection, and
-investigate the resulting security event.
+**Status:** COMPLETE
 
-### Build Tasks
+### Focus
 
-- [ ] Define learning objectives
-- [ ] Configure Windows telemetry source
-- [ ] Determine required Windows logging
-- [ ] Verify Splunk ingestion
-- [ ] Generate safe PowerShell test activity
-- [ ] Locate activity in Splunk
-- [ ] Develop baseline SPL search
-- [ ] Develop detection SPL
-- [ ] Investigate suspicious activity
-- [ ] Identify relevant fields
-- [ ] Determine severity
-- [ ] Identify possible false positives
-- [ ] Map detection to MITRE ATT&CK
-- [ ] Capture sanitized screenshots
-- [ ] Complete investigation worksheet
-- [ ] Complete incident report
-- [ ] Write student instructions
-- [ ] Write expected-results section
-- [ ] Create troubleshooting section
-- [ ] Validate lab from beginning to end
+- Nmap
+- tcpdump
+- PCAP analysis
+- TCP SYN interpretation
+- Structured network telemetry
+- Multi-port reconnaissance detection
+- Splunk-ready CSV generation
+- MITRE ATT&CK T1046 — Network Service Discovery
 
----
+### Validation Note
 
-## Lab 03 — Network Reconnaissance Investigation
+PCAP evidence, structured telemetry, detection logic, and investigation
+were independently validated.
 
-**Status:** NOT STARTED
+Historical Splunk Free licensing restrictions affected final indexed-event
+validation during the original lab.
 
-### Objective
+## Lab 04 — SSH Brute-Force Detection
 
-Generate controlled network reconnaissance activity, collect
-network telemetry, develop a detection, investigate the source,
-and document the analyst's findings.
+**Status:** COMPLETE
 
-### Build Tasks
+### Focus
 
-- [ ] Define learning objectives
-- [ ] Establish network telemetry source
-- [ ] Verify telemetry ingestion
-- [ ] Establish normal network baseline
-- [ ] Generate controlled reconnaissance activity
-- [ ] Locate activity in Splunk
-- [ ] Develop baseline SPL search
-- [ ] Develop detection SPL
-- [ ] Investigate reconnaissance activity
-- [ ] Identify source and destination systems
-- [ ] Determine severity
-- [ ] Identify possible false positives
-- [ ] Map detection to MITRE ATT&CK
-- [ ] Capture sanitized screenshots
-- [ ] Complete investigation worksheet
-- [ ] Complete incident report
-- [ ] Write student instructions
-- [ ] Write expected-results section
-- [ ] Create troubleshooting section
-- [ ] Validate lab from beginning to end
+- Repeated SSH authentication failures
+- Source/destination/account correlation
+- Time-window aggregation
+- Threshold-based detection
+- Success-after-failure analysis
+- Syslog repeated-message handling
+- MITRE ATT&CK T1110 — Brute Force
+- Sanitized evidence and SHA-256 verification
 
----
+**Final Disposition:** TRUE POSITIVE — AUTHORIZED SECURITY TESTING
+
+## Lab 05 — SSH Success-After-Failure Correlation
+
+**Status:** COMPLETE
+
+### Focus
+
+- Repeated failed SSH authentication
+- Subsequent successful authentication
+- Source/destination/account correlation
+- Temporal correlation
+- 5-, 15-, and 30-minute detection windows
+- Fail2Ban defensive-control interaction
+- Splunk-oriented detection logic
+- Evidence integrity verification
+
+### Validation Result
+
+- 4 normalized authentication failures
+- 1 subsequent successful authentication
+- Same source, destination, and account
+- Failure-to-success interval: 18 minutes 02 seconds
+- 5-minute window: NOT DETECTED
+- 15-minute window: NOT DETECTED
+- 30-minute window: DETECTED
+
+**Final Disposition:** TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+## Lab 06 — Windows Privileged Administrative Discovery
+
+**Status:** COMPLETE
+
+### Focus
+
+- Event ID 4624 — Successful authentication
+- Event ID 4672 — Special privilege assignment
+- Event ID 4688 — Process creation
+- Windows Logon ID correlation
+- Parent/child process relationships
+- Command-line behavioral context
+- Benign elevated-process comparison
+- Privileged administrative discovery
+- MITRE ATT&CK T1087 — Account Discovery
+- SHA-256 evidence verification
+
+### Validation Result
+
+- Interactive authentication observed
+- Privileged logon context confirmed
+- Special privileges correlated through Logon ID
+- Benign elevated-process control preserved
+- Administrative discovery activity observed
+- Process ancestry confirmed
+- Normalized dataset ingested into Splunk
+
+**Final Disposition:** TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+## Lab 07 — PowerShell Behavioral Detection
+
+**Status:** COMPLETE — PUBLISHED
+
+### Focus
+
+- Windows Security Event ID 4688
+- PowerShell Operational Event ID 4104
+- Process and script-block correlation
+- Encoded PowerShell analysis
+- Weighted behavioral scoring
+- Controlled positive and negative validation
+- Detection tuning
+- Investigation-query troubleshooting
+- MITRE ATT&CK T1059.001 — PowerShell
+
+### Behavioral Scoring
+
+| Signal | Score |
+|---|---:|
+| `EncodedCommand` | +3 |
+| `NonInteractive` | +1 |
+| `NoProfile` | +1 |
+
+### Validation Result
+
+| Test | Score | Disposition |
+|---|---:|---|
+| E1 | 1 | BASELINE |
+| E2 | 2 | REVIEW |
+| E3 | 5 | INVESTIGATE |
+
+Validation identified a blind spot in the original Event ID 4688
+investigation query because the E3 marker existed inside Base64-encoded
+command-line content rather than as plaintext.
+
+The investigation approach was corrected and successfully retested using
+Event ID 4688 process context together with Event ID 4104 script-block
+content.
+
+**Final Disposition:** TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+## Hands-On Lab Milestone
+
+**7 hands-on SOC labs completed and documented.**
+
+Current technical progression:
+
+```text
+Telemetry Collection
+        ↓
+Detection Development
+        ↓
+Behavioral Analysis
+        ↓
+Event Correlation
+        ↓
+Controlled Validation
+        ↓
+Investigation
+        ↓
+Evidence Preservation
+        ↓
+Analyst Disposition
+```
 
 # PHASE 3 — DETECTION ENGINEERING
 
+**Status:** ACTIVE
+
 ## Detection Library
 
-### Initial Detection Pack
+### Implemented Detection Capabilities
 
-- [ ] Linux authentication failures
-- [ ] Repeated authentication failures
-- [ ] Authentication failure threshold detection
-- [ ] Successful login following repeated failures
-- [ ] Suspicious PowerShell execution
-- [ ] Encoded PowerShell activity
-- [ ] Network port scanning
-- [ ] Multiple destination port activity
-- [ ] Privilege escalation activity
-- [ ] Suspicious process execution
+- [x] Linux authentication failure detection
+- [x] Repeated authentication failure detection
+- [x] Authentication threshold analysis
+- [x] Success-after-failure correlation
+- [x] Suspicious PowerShell analysis
+- [x] Encoded PowerShell detection
+- [x] Network reconnaissance detection
+- [x] Multi-destination-port analysis
+- [x] Windows privileged-context correlation
+- [x] Suspicious process execution analysis
+- [x] Parent/child process correlation
+- [x] Behavioral scoring
+- [x] Multi-event telemetry correlation
+- [x] Controlled detection validation
+- [x] Detection tuning and blind-spot identification
 
-### Detection Documentation
+## Detection Documentation Standard
 
-Each production detection should contain:
+Production-quality detections should contain:
 
-- [ ] Detection name
-- [ ] Detection objective
-- [ ] Data source
-- [ ] SPL query
-- [ ] Detection logic explanation
-- [ ] MITRE ATT&CK mapping
-- [ ] Severity
-- [ ] Severity rationale
-- [ ] False-positive considerations
-- [ ] Investigation procedure
-- [ ] Remediation recommendations
-- [ ] Validation procedure
+- [x] Detection name
+- [x] Detection objective
+- [x] Required data source
+- [x] Detection/query logic
+- [x] Detection logic explanation
+- [x] MITRE ATT&CK mapping
+- [x] Severity or behavioral score
+- [x] Severity rationale
+- [x] False-positive considerations
+- [x] Investigation procedure
+- [x] Validation procedure
+- [x] Analyst disposition guidance
 
----
+### Detection Engineering Milestone
+
+Lab 07 established the first explicitly weighted behavioral analytic in
+the Starter Kit and demonstrated controlled validation across three
+expected dispositions:
+
+```text
+BASELINE → REVIEW → INVESTIGATE
+```
+
+The lab also demonstrated an important engineering principle:
+
+**A detection is not complete merely because it fires. Its investigation
+logic must also be tested against the telemetry representation actually
+available to the analyst.**
 
 # PHASE 4 — INCIDENT RESPONSE TOOLS
 
@@ -257,8 +364,6 @@ INCIDENT DOCUMENTATION
 
 LESSONS LEARNED
 
----
-
 # PHASE 5 — SOC CHECKLISTS
 
 Create concise operational references for:
@@ -272,8 +377,6 @@ Create concise operational references for:
 - [ ] Incident escalation checklist
 - [ ] End-of-shift SOC checklist
 - [ ] Analyst shift-handoff checklist
-
----
 
 # PHASE 6 — PORTFOLIO BUILDER
 
@@ -311,8 +414,6 @@ Create concise operational references for:
 - [ ] Create detection explanation framework
 - [ ] Create incident investigation explanation framework
 
----
-
 # PHASE 7 — PRODUCT DOCUMENTATION
 
 ## Start Here
@@ -336,8 +437,6 @@ Create concise operational references for:
 - [ ] Data pipeline architecture
 - [ ] Screenshot standards
 - [ ] Privacy and sanitation standards
-
----
 
 # PHASE 8 — QUALITY ASSURANCE
 
@@ -378,8 +477,6 @@ Verify that published material contains no:
 - [ ] Expected results included
 - [ ] Troubleshooting included
 
----
-
 # PHASE 9 — FINAL PRODUCT
 
 ## Packaging
@@ -405,8 +502,6 @@ Verify that published material contains no:
 - [ ] Final corrections completed
 - [ ] Version 1.0 approved
 - [ ] Version 1.0 packaged
-
----
 
 # PHASE 10 — BUSINESS LAUNCH
 
@@ -455,54 +550,71 @@ Verify that published material contains no:
 - [ ] First product review
 - [ ] Version 1.1 improvement list
 
----
-
 # 30-DAY TARGET
+
+The original 30-day build plan has progressed substantially beyond the
+initial technical target. Seven hands-on SOC labs are now complete.
 
 ## Week 1 — BUILD
 
+**Status:** COMPLETE
+
 Goal:
 
-Establish the SOC architecture and complete the technical foundation
-for the first hands-on lab.
+Establish the SOC architecture and complete the technical foundation.
 
 - [x] Product workspace created
 - [x] Product manifest created
 - [x] Git initialized
 - [x] Reference SOC documented
-- [ ] Telemetry pipeline validated
-- [ ] Lab 01 completed
+- [x] Telemetry pipeline established
+- [x] Initial hands-on lab completed
 
 ## Week 2 — PRODUCTIZE
 
+**Status:** ACTIVE
+
 Goal:
 
-Convert working technical material into professional training assets.
+Convert working technical material into professional portfolio and
+training assets.
 
-- [ ] Labs documented
-- [ ] Templates created
-- [ ] Checklists created
-- [ ] Screenshots captured
-- [ ] Detection pack assembled
+- [x] Hands-on labs documented
+- [x] Detection engineering documentation established
+- [x] Incident-response documentation established
+- [x] SOC checklist structure established
+- [x] Evidence-handling workflow established
+- [x] SHA-256 integrity workflow established
+- [x] GitHub portfolio structure established
+- [ ] Complete reusable template package
+- [ ] Complete screenshot package
+- [ ] Assemble Version 1.0 detection pack
 
 ## Week 3 — PACKAGE AND LAUNCH
 
+**Status:** PENDING
+
 Goal:
 
-Create a product that can actually be purchased and delivered.
+Create a polished Version 1.0 package that can be distributed and
+presented professionally.
 
 - [ ] Final product package
-- [ ] Storefront
+- [ ] Final documentation review
 - [ ] Product graphics
 - [ ] Product listing
 - [ ] Free lead magnet
 - [ ] Launch content
+- [ ] Storefront
 
 ## Week 4 — SELL AND IMPROVE
 
+**Status:** PENDING
+
 Goal:
 
-Validate that customers will pay for the product.
+Validate the product with real users and use feedback to guide Version
+1.1.
 
 - [ ] Launch publicly
 - [ ] Generate first sale
@@ -511,45 +623,66 @@ Validate that customers will pay for the product.
 - [ ] Improve product
 - [ ] Begin Version 1.1 backlog
 
----
-
 # SUCCESS METRICS
 
 ## Product
 
-- Version 1.0 completed
-- Three validated hands-on SOC labs
-- Ten documented detections
-- Professional analyst templates
-- Portfolio-building resources
+Current technical milestone:
+
+- [x] Seven hands-on SOC labs completed
+- [x] Linux and Windows telemetry represented
+- [x] Network telemetry represented
+- [x] Detection engineering workflow demonstrated
+- [x] Incident investigation workflow demonstrated
+- [x] MITRE ATT&CK mapping demonstrated
+- [x] Evidence integrity verification demonstrated
+- [x] Behavioral detection scoring demonstrated
+- [x] Multi-event correlation demonstrated
+- [x] Git/GitHub publication workflow demonstrated
+- [ ] Version 1.0 product package completed
+- [ ] Reusable analyst template package completed
+- [ ] Final detection pack assembled
+- [ ] Portfolio packaging completed
 
 ## Learning
 
-Demonstrate practical experience with:
+Demonstrated practical experience with:
 
 - Linux
+- Windows
 - Splunk
 - SPL
 - SIEM operations
+- Windows Security Event telemetry
+- PowerShell Script Block Logging
+- SSH authentication telemetry
+- Network packet analysis
+- PCAP analysis
 - Detection engineering
+- Behavioral scoring
+- Event correlation
+- Detection validation
+- Detection tuning
 - Incident response
+- Analyst triage
 - MITRE ATT&CK
-- Python
+- Evidence handling
+- SHA-256 integrity verification
 - Git
+- GitHub
 - Technical documentation
 
 ## Business
 
 Initial milestones:
 
-- First product published
-- First lead generated
-- First paying customer
-- First five customers
-- First customer review
-- First $100 in product revenue
-
----
+- [ ] Version 1.0 packaged
+- [ ] First product published
+- [ ] First lead generated
+- [ ] First paying customer
+- [ ] First five customers
+- [ ] First customer review
+- [ ] First $100 in product revenue
 
 # PRODUCT BACKLOG
 
@@ -598,48 +731,47 @@ Do not interrupt Version 1.0 development to build them.
 - Rural small-business technology consulting
 - Aviation cybersecurity consulting
 
----
-
 # CURRENT BUILD POSITION
 
-**Current Phase:** Phase 1 — Foundation
+**Current Phase:** Phase 2 / Phase 3 — Hands-On Labs and Detection Engineering
 
-**Current Milestone:** Validate SOC telemetry pipeline
+**Technical Milestone:** Labs 01–07 completed and documented
 
-**Next Lab:** Lab 01 — Linux Authentication Investigation
+**Latest Completed Lab:** Lab 07 — PowerShell Behavioral Detection
+
+**Latest Published Milestone:** Lab 07 detection artifacts and root repository documentation
+
+**Next Lab:** Lab 08 — Detection Engineering Expansion
+
+**Productization Status:** ACTIVE
 
 **Next Technical Objective:**
 
-Linux Authentication Event
-
-↓
-
-Security Log
-
-↓
-
-Splunk Input
-
-↓
-
-Indexed Event
-
-↓
-
-SPL Search
-
-↓
-
-Detection
-
-↓
-
-Investigation
-
-↓
-
-Incident Documentation
-
+```text
+Existing Detection Capability
+        ↓
+Select Lab 08 Detection Objective
+        ↓
+Define Required Telemetry
+        ↓
+Establish Baseline
+        ↓
+Generate Controlled Activity
+        ↓
+Develop Detection Logic
+        ↓
+Validate Positive and Negative Cases
+        ↓
+Investigate Alert Context
+        ↓
+Tune Detection
+        ↓
+Preserve Evidence
+        ↓
+Document Analyst Findings
+        ↓
+Publish
+```
 ---
 
 # PROJECT RULE

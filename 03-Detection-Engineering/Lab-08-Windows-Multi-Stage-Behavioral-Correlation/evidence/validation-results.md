@@ -124,7 +124,9 @@ powershell.exe — PID 0x46ec
     ├── HOSTNAME.EXE
     ├── whoami.exe /groups
     └── ipconfig.exe
-```All four process-creation events shared:
+```
+
+All four process-creation events shared:
 
 - Account: `Matt Archuleta`
 - Creator: `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`

@@ -44,7 +44,9 @@ ForEach-Object {
 
     foreach ($item in $xml.Event.EventData.Data) {
         $data[$item.Name] = $item.'#text'
-    }    [PSCustomObject]@{
+    }
+
+    [PSCustomObject]@{
         Time        = $_.TimeCreated
         Account     = $data.SubjectUserName
         Process     = $data.NewProcessName
@@ -113,7 +115,9 @@ foreach ($Group in $Groups) {
     }
     else {
         'BASELINE'
-    }    $FirstEvent = $GroupEvents |
+    }
+
+    $FirstEvent = $GroupEvents |
         Sort-Object Time |
         Select-Object -First 1
 

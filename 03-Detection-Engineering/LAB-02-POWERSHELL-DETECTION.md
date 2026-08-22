@@ -31,6 +31,7 @@ Primary PowerShell telemetry:
 ```text
 Microsoft-Windows-PowerShell/Operational
 Event ID 4104
+```
 Process creation telemetry:
 
 Windows Security Log

@@ -316,6 +316,112 @@ TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
 
 ---
 
+### Lab 08 — Windows Multi-Stage Behavioral Correlation
+
+Correlates multiple Windows security behaviors into a higher-context detection rather than evaluating individual events in isolation.
+
+**Detection focus**
+
+- Multi-stage Windows behavioral correlation
+- Process-creation telemetry
+- PowerShell activity
+- Identity and execution context
+- Parent/child process relationships
+- Temporal event correlation
+- Behavioral detection logic
+- Controlled validation
+
+**Key analyst lesson**
+
+Individual security events may have limited investigative value on their own. Correlating related behaviors across a bounded time window can reveal a more meaningful activity sequence.
+
+**Lab artifacts**
+
+- [Lab 08 — Windows Multi-Stage Behavioral Correlation](03-Detection-Engineering/Lab-08-Windows-Multi-Stage-Behavioral-Correlation/)
+
+---
+
+### Lab 09 — Detection-to-Incident Workflow
+
+Extends detection engineering into a complete SOC workflow from alert generation through analyst triage, investigation, and incident handoff.
+
+**Detection focus**
+
+- Detection alert creation
+- Tier 1 analyst triage
+- Evidence review
+- Investigation timeline development
+- Detection-to-incident workflow
+- Analyst escalation and handoff
+- Evidence-based disposition
+
+**Key analyst lesson**
+
+A detection becomes operationally useful when an analyst can validate it, establish context, document findings, and make a defensible escalation or disposition decision.
+
+**Lab artifacts**
+
+- [Lab 09 — Detection-to-Incident Workflow](03-Detection-Engineering/Lab-09-Detection-to-Incident-Workflow/)
+
+---
+
+### Lab 10 — Capstone SOC Investigation
+
+Integrates the Starter Kit detection, correlation, triage, investigation, ATT&CK mapping, evidence assessment, and incident-reporting workflows into a complete SOC case.
+
+**Investigation focus**
+
+- Windows Event ID 4104 PowerShell telemetry
+- Windows Event ID 4688 process creation
+- Event ID 4624 logon correlation
+- Event ID 4672 privilege correlation
+- Logon ID correlation
+- Parent/child process analysis
+- Bounded incident timeline
+- Cross-source corroboration
+- MITRE ATT&CK mapping
+- Tier 1 triage
+- Competing-hypothesis analysis
+- Incident disposition
+- Final SOC incident reporting
+
+**Observed discovery sequence**
+
+```text
+powershell.exe
+|
++-- whoami.exe
++-- HOSTNAME.EXE
++-- whoami.exe /groups
++-- ipconfig.exe
+```
+
+**Final disposition**
+
+TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+**Security incident**
+
+NO
+
+**Case status**
+
+CLOSED
+
+**Key analyst lesson**
+
+ATT&CK-mapped discovery behavior can represent legitimate administration, security testing, or adversary activity. Telemetry establishes what occurred; correlation and contextual investigation establish the appropriate disposition.
+
+**Lab artifacts**
+
+- [Lab 10 — Capstone SOC Investigation](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/)
+- [Final SOC Incident Report](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/report/final-soc-incident-report.md)
+- [Correlated Event Timeline](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/evidence/correlated-event-timeline.md)
+- [Investigation Analysis](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/investigation/investigation-analysis.md)
+- [MITRE ATT&CK Mapping](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/investigation/mitre-attack-mapping.md)
+
+---
+
 ## Repository Structure
 
 ```text
@@ -476,52 +582,18 @@ Recommended review order:
 
 For a quick technical review, begin with:
 
-* Lab 01 — Linux Authentication Detection
-* Lab 02 — Suspicious PowerShell
-* Lab 03 — Network Reconnaissance Detection
-* Lab 04 — SSH Brute-Force Detection
-* Lab 05 — SSH Success-After-Failure Correlation
-* Lab 06 — Windows Privileged Administrative Discovery
-* [Lab 07 — PowerShell Behavioral Detection](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/)
+1. [Lab 01 — Linux Authentication Telemetry](02-Splunk-Labs/LAB-01-LINUX-AUTH-TELEMETRY.md)
+2. [Lab 02 — Suspicious PowerShell](02-Splunk-Labs/LAB-02-SUSPICIOUS-POWERSHELL.md)
+3. [Lab 03 — Network Reconnaissance](02-Splunk-Labs/LAB-03-NETWORK-RECONNAISSANCE.md)
+4. [Lab 04 — SSH Brute Force](02-Splunk-Labs/LAB-04-SSH-BRUTE-FORCE.md)
+5. [Lab 05 — SSH Success After Failure](02-Splunk-Labs/LAB-05-SSH-SUCCESS-AFTER-FAILURE.md)
+6. [Lab 06 — Windows Identity, Privilege & Process Correlation](03-Detection-Engineering/Lab-06-Windows-Identity-Privilege-Process-Correlation/)
+7. [Lab 07 — PowerShell Behavioral Detection](03-Detection-Engineering/Lab-07-PowerShell-Behavioral-Detection/)
+8. [Lab 08 — Windows Multi-Stage Behavioral Correlation](03-Detection-Engineering/Lab-08-Windows-Multi-Stage-Behavioral-Correlation/)
+9. [Lab 09 — Detection-to-Incident Workflow](03-Detection-Engineering/Lab-09-Detection-to-Incident-Workflow/)
+10. [Lab 10 — Capstone SOC Investigation](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/)
 
----
-
-## Project Status
-
-### Completed
-
-* Lab 01 — Linux Authentication Detection
-* Lab 02 — Suspicious PowerShell
-* Lab 03 — Network Reconnaissance Detection
-* Lab 04 — SSH Brute-Force Detection
-* Lab 05 — SSH Success-After-Failure Correlation
-* Lab 06 — Windows Privileged Administrative Discovery
-* Lab 07 — PowerShell Behavioral Detection
-
-### Current Milestone
-
-**Seven hands-on SOC labs completed and documented.**
-
-The project now demonstrates practical work across:
-
-* Linux authentication detection
-* Windows endpoint telemetry
-* PowerShell analysis
-* Network reconnaissance detection
-* SSH brute-force detection
-* Authentication success-after-failure correlation
-* Windows privilege and process correlation
-* Behavioral detection engineering
-* Controlled detection validation
-* Incident investigation
-* Evidence integrity verification
-
-### Next
-
-* Lab 08 — Detection engineering expansion
-* Additional Splunk validation
-* Detection maturity and tuning
-* Portfolio packaging
+For the strongest single end-to-end example, review the [Lab 10 Final SOC Incident Report](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/report/final-soc-incident-report.md).
 
 ---
 

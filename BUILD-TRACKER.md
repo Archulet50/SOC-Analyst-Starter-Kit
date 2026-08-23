@@ -53,7 +53,7 @@ The primary SOC workstation currently provides:
 
 # PHASE 2 — HANDS-ON LABS
 
-**Status:** ACTIVE — 7 LABS COMPLETED
+**Status:** COMPLETE — 10 LABS COMPLETED
 
 The hands-on lab program has expanded beyond the original three-lab
 Version 1.0 concept. Labs are developed through controlled activity,
@@ -225,10 +225,144 @@ Event ID 4688 process context together with Event ID 4104 script-block
 content.
 
 **Final Disposition:** TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+## Lab 08 — Windows Multi-Stage Behavioral Correlation
 
+**Status:** COMPLETE — PUBLISHED
+
+### Focus
+
+- Multi-stage Windows behavioral correlation
+- Windows Security Event ID 4688
+- PowerShell Operational Event ID 4104
+- Identity and execution context
+- Parent/child process relationships
+- Temporal event correlation
+- Behavioral sequence analysis
+- Controlled positive and negative validation
+- Detection tuning
+
+### Detection Engineering Result
+
+Lab 08 extended individual behavioral detections into a multi-stage
+correlation model. Related Windows events were evaluated as a bounded
+activity sequence rather than as isolated security events.
+
+The lab demonstrated that correlation across process, PowerShell, identity,
+and temporal context can provide greater investigative value than any
+individual event alone.
+
+**Status:** VALIDATED
+
+---
+
+## Lab 09 — Detection-to-Incident Workflow
+
+**Status:** COMPLETE — PUBLISHED
+
+### Focus
+
+- Detection alert creation
+- Tier 1 analyst triage
+- Evidence review
+- Investigation timeline development
+- Detection-to-incident workflow
+- Analyst escalation and handoff
+- Evidence-based disposition
+- SOC case documentation
+
+### Workflow Result
+
+Lab 09 extended detection engineering into an operational SOC workflow.
+
+The validated sequence demonstrated:
+
+```text
+Detection
+    ↓
+Alert
+    ↓
+Tier 1 Triage
+    ↓
+Evidence Review
+    ↓
+Investigation
+    ↓
+Incident Decision
+    ↓
+Handoff / Disposition
+```
+
+The lab established that detection logic becomes operationally useful when
+an analyst can validate the alert, establish context, preserve evidence,
+document findings, and make a defensible escalation or disposition decision.
+
+**Status:** VALIDATED
+
+---
+
+## Lab 10 — Capstone SOC Investigation
+
+**Status:** COMPLETE — PUBLISHED
+
+### Focus
+
+- Windows Event ID 4104 PowerShell telemetry
+- Windows Event ID 4688 process creation
+- Event ID 4624 logon correlation
+- Event ID 4672 privilege correlation
+- Logon ID correlation
+- Parent/child process analysis
+- Bounded incident timeline
+- Cross-source corroboration
+- MITRE ATT&CK mapping
+- Tier 1 triage
+- Competing-hypothesis analysis
+- Incident disposition
+- Final SOC incident reporting
+
+### Observed Discovery Sequence
+
+```text
+powershell.exe
+|
++-- whoami.exe
++-- HOSTNAME.EXE
++-- whoami.exe /groups
++-- ipconfig.exe
+```
+
+### Investigation Result
+
+The detection correctly identified ATT&CK-mapped discovery behavior and
+triggered investigation. Process ancestry, session context, PowerShell
+telemetry, surrounding activity, and authorization context were correlated
+to determine the appropriate disposition.
+
+**Detection Result:** TRUE POSITIVE
+
+**Activity Classification:** AUTHORIZED CONTROLLED ACTIVITY
+
+**Security Incident:** NO
+
+**Case Status:** CLOSED
+
+### Capstone Result
+
+Lab 10 integrated telemetry analysis, detection, correlation, triage,
+investigation, ATT&CK mapping, evidence assessment, incident disposition,
+and final SOC reporting into a complete end-to-end case.
+
+The capstone demonstrates the distinction between a valid detection and a
+malicious incident: observable behavior can correctly satisfy detection
+logic while contextual investigation establishes that the underlying
+activity was authorized.
+
+**Final Disposition:** TRUE POSITIVE — AUTHORIZED CONTROLLED ACTIVITY
+
+---
 ## Hands-On Lab Milestone
 
-**7 hands-on SOC labs completed and documented.**
+**10 hands-on SOC labs completed and documented.**
 
 Current technical progression:
 
@@ -251,6 +385,8 @@ Analyst Disposition
 ```
 
 # PHASE 3 — DETECTION ENGINEERING
+
+**Status:** COMPLETE — VERSION 1.0 TECHNICAL SEQUENCE
 
 **Status:** ACTIVE
 
@@ -553,7 +689,7 @@ Verify that published material contains no:
 # 30-DAY TARGET
 
 The original 30-day build plan has progressed substantially beyond the
-initial technical target. Seven hands-on SOC labs are now complete.
+initial technical target. Ten hands-on SOC labs are now complete.
 
 ## Week 1 — BUILD
 
@@ -629,7 +765,7 @@ Validate the product with real users and use feedback to guide Version
 
 Current technical milestone:
 
-- [x] Seven hands-on SOC labs completed
+- [x] Ten hands-on SOC labs completed
 - [x] Linux and Windows telemetry represented
 - [x] Network telemetry represented
 - [x] Detection engineering workflow demonstrated
@@ -733,46 +869,48 @@ Do not interrupt Version 1.0 development to build them.
 
 # CURRENT BUILD POSITION
 
-**Current Phase:** Phase 2 / Phase 3 — Hands-On Labs and Detection Engineering
+**Current Phase:** Phase 4 — Productization and Portfolio Packaging
 
-**Technical Milestone:** Labs 01–07 completed and documented
+**Technical Milestone:** Labs 01–10 completed and documented
 
-**Latest Completed Lab:** Lab 07 — PowerShell Behavioral Detection
+**Latest Completed Lab:** Lab 10 — Capstone SOC Investigation
 
-**Latest Published Milestone:** Lab 07 detection artifacts and root repository documentation
+**Latest Published Milestone:** Lab 10 capstone investigation, final SOC incident report, and root repository documentation
 
-**Next Lab:** Lab 08 — Detection Engineering Expansion
+**Hands-On Lab Status:** COMPLETE
+
+**Detection Engineering Status:** COMPLETE — Version 1.0 technical lab sequence
 
 **Productization Status:** ACTIVE
 
 **Next Technical Objective:**
 
 ```text
-Existing Detection Capability
+Completed Lab 01–10 Technical Sequence
         ↓
-Select Lab 08 Detection Objective
+Audit Version 1.0 Documentation
         ↓
-Define Required Telemetry
+Complete Reusable Analyst Templates
         ↓
-Establish Baseline
+Finalize SOC Checklists
         ↓
-Generate Controlled Activity
+Review Evidence Sanitation
         ↓
-Develop Detection Logic
+Organize Screenshots
         ↓
-Validate Positive and Negative Cases
+Assemble Detection Pack
         ↓
-Investigate Alert Context
+Package Portfolio Materials
         ↓
-Tune Detection
+Build Release Candidate
         ↓
-Preserve Evidence
-        ↓
-Document Analyst Findings
+Validate Version 1.0 Package
         ↓
 Publish
 ```
+
 ---
+
 
 # PROJECT RULE
 

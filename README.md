@@ -6,11 +6,27 @@ This repository is built around controlled lab activity and documented analyst m
 
 ## Portfolio Highlights
 
-**10 hands-on SOC labs completed**, progressing from foundational telemetry analysis through behavioral detection, multi-event correlation, incident investigation, and final SOC reporting.
+**10 hands-on SOC labs completed and documented**, progressing from foundational telemetry analysis through behavioral detection, event correlation, analyst triage, incident investigation, and final SOC reporting.
+
+### Core Capabilities Demonstrated
+
+- Splunk investigation and SPL
+- Linux and Windows security telemetry analysis
+- Detection engineering and validation
+- PowerShell behavioral analysis
+- Windows Event ID correlation
+- Authentication and network reconnaissance detection
+- Parent/child process analysis
+- Multi-stage behavioral correlation
+- Tier 1 SOC alert triage
+- Incident investigation and disposition
+- MITRE ATT&CK mapping
+- Evidence preservation and integrity verification
+- Technical incident reporting
 
 ### Featured Capstone — Lab 10
 
-The [Lab 10 — Capstone SOC Investigation](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/) demonstrates an end-to-end SOC investigation using Windows process, PowerShell, authentication, and privilege telemetry.
+The [Lab 10 — Capstone SOC Investigation](03-Detection-Engineering/Lab-10-Capstone-SOC-Investigation/) demonstrates an end-to-end SOC investigation using Windows process, PowerShell, authentication, privilege, and session telemetry.
 
 The investigation includes:
 
@@ -35,8 +51,6 @@ The investigation includes:
 ### Core Technical Areas
 
 `Splunk` · `Detection Engineering` · `Windows Event Logs` · `Linux Authentication` · `PowerShell` · `MITRE ATT&CK` · `Incident Investigation` · `Event Correlation` · `Evidence Handling`
-
----
 
 ## Current Labs
 

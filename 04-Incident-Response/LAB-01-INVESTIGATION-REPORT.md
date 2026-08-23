@@ -67,3 +67,5 @@ detected_threats.log
 Splunk
         ↓
 SOC Investigation
+
+```

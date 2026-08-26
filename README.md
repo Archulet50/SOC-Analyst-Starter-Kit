@@ -489,18 +489,19 @@ ATT&CK-mapped discovery behavior can represent legitimate administration, securi
 05-SOC-Checklists/
     Repeatable SOC triage workflows
 
-06-Portfolio-Builder/
-    Portfolio development material
-
-07-Templates/
-    Reusable analyst and documentation templates
-
-08-Screenshots/
-    Supporting visual evidence
-
-09-Final-Product/
-    Final packaged product material
 ```
+
+---
+
+### Public Portfolio Repository
+
+This repository contains selected technical labs, detection engineering
+artifacts, investigation documentation, and portfolio evidence demonstrating
+the methodology behind the SOC Analyst Starter Kit.
+
+The complete customer edition includes guided lab instruction, reusable analyst
+resources, solutions and examples, exercises, and supporting materials. It is
+distributed separately by Archuleta Cyber Labs.
 
 ---
 

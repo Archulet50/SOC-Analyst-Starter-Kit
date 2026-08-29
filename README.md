@@ -1,4 +1,11 @@
-# SOC Analyst Starter Kit
+Hands-on SOC analyst portfolio demonstrating practical detection engineering, network and endpoint telemetry analysis, incident investigation, evidence handling, MITRE ATT&CK mapping, and repeatable analyst triage workflows.
+
+Built and maintained by **Archuleta Cyber Labs**.
+
+🌐 Website: https://archuletacyberlabs.com  
+📧 Support: support@archuletacyberlabs.com
+
+This repository contains selected public lab work and portfolio evidence from the SOC Analyst Starter Kit project. It is built around controlled lab activity, documented analyst methodology, evidence-based investigation, and defensible incident disposition rather than screenshots alone.# SOC Analyst Starter Kit
 
 Hands-on SOC analyst portfolio demonstrating practical detection engineering, network and endpoint telemetry analysis, incident investigation, evidence handling, MITRE ATT&CK mapping, and repeatable analyst triage workflows.
 
